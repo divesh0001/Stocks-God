@@ -14,5 +14,5 @@ export default defineConfig({
   server: {
     open: true,
   },
-  base: '/Stocks-God',
+  base: '/Stocks-God/', 
 });

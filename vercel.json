@@ -1,8 +1,29 @@
+
 {
-    "rewrites":[
+  "headers": [
+    {
+      "source": "/Stocks-God/(.*).js",
+      "headers": [
         {
-            "source":"/(.*)",
-            "destination":"/"
+          "key": "Content-Type",
+          "value": "application/javascript"
         }
-    ]
+      ]
+    },
+    {
+      "source": "/Stocks-God/(.*).css",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "text/css"
+        }
+      ]
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/Stocks-God/(.*)",
+      "destination": "/Stocks-God/index.html"
+    }
+  ]
 }

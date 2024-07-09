@@ -42,22 +42,22 @@ export const navigation = [
   {
     id: "0",
     title: "Stocks news",
-    url: "/Stocks-God/stocks-news",
+    url: "stocks-news",
   },
   {
     id: "1",
     title: "Ipo Gmp",
-    url: "/Stocks-God/ipo-gmp",
+    url: "ipo-gmp",
   },
   {
     id: "2",
     title: "Dividend calendar",
-    url: "/Stocks-God/dividend-calendar",
+    url: "dividend-calendar",
   },
   {
     id: "3",
     title: "Stock prediction",
-    url: "/Stocks-God/stock-prediction",
+    url: "stock-prediction",
   },
   {
     id: "4",

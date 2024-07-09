@@ -16,13 +16,13 @@ const App = () => {
     <div className="pt-[4.75rem] lg:pt-[5.25rem] overflow-hidden">
       <Header />
       <Routes>
-      <Route path="/Stocks-God/dividend-calendar" element={<DividendCalendar />} />
-        <Route path="/Stocks-God/stock-prediction" element={<StockPrediction />} />
-        <Route path="/Stocks-God/stocks-news" element={<StocksNews />} />
-        <Route path="/Stocks-God/ipo-gmp" element={<Ipogmp />} />
+      <Route path="/dividend-calendar" element={<DividendCalendar />} />
+        <Route path="/stock-prediction" element={<StockPrediction />} />
+        <Route path="/stocks-news" element={<StocksNews />} />
+        <Route path="/ipo-gmp" element={<Ipogmp />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
-        <Route path="/Stocks-God" element={
+        <Route path="/" element={
           <>
             <Hero />
             <Benefits />
