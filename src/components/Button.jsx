@@ -1,26 +1,7 @@
 import { Link } from "react-router-dom";
 import ButtonSvg from "../assets/svg/ButtonSvg";
 
-const Button = ({ className, to, children, px, white }) => {
-  const classes = `button relative inline-flex items-center justify-center h-11 transition-colors hover:text-color-1 ${
-    px || "px-7"
-  } ${white ? "text-n-8" : "text-n-1"} ${className || ""}`;
-  const spanClasses = "relative z-10";
-
-  return (
-    <Link to={to} className={classes}>
-      <span className={spanClasses}>{children}</span>
-      {ButtonSvg(white)}
-    </Link>
-  );
-};
-
-export default Button;
-
-
-/** import ButtonSvg from "../assets/svg/ButtonSvg";
-
-const Button = ({ className, href, onClick, children, px, white, target }) => {
+const Button = ({ className, to, href, onClick, children, px, white }) => {
   const classes = `button relative inline-flex items-center justify-center h-11 transition-colors hover:text-color-1 ${
     px || "px-7"
   } ${white ? "text-n-8" : "text-n-1"} ${className || ""}`;
@@ -34,18 +15,26 @@ const Button = ({ className, href, onClick, children, px, white, target }) => {
   );
 
   const renderLink = () => (
-    <a href={href} className={classes} target={target} rel="noopener noreferrer">
+    <Link to={to} className={classes}>
+      <span className={spanClasses}>{children}</span>
+      {ButtonSvg(white)}
+    </Link>
+  );
+
+  const renderAnchor = () => (
+    <a href={href} className={classes}>
       <span className={spanClasses}>{children}</span>
       {ButtonSvg(white)}
     </a>
   );
 
-  return href ? renderLink() : renderButton();
+  if (to) {
+    return renderLink();
+  } else if (href) {
+    return renderAnchor();
+  } else {
+    return renderButton();
+  }
 };
 
 export default Button;
-
-
-
- * 
-*/
