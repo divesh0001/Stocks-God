@@ -36,7 +36,22 @@ import {
   yourlogo,
 } from "../assets";
 
-
+// import{
+//   combined3,
+//   predictionman,
+//   whystocksgod1,
+//   whystocksgod,
+// } from "src/asset";
+import stocksgod from "../asset/Stocks God.png"; 
+import logoipo from "../asset/logoipo.png";
+import logonews from "../asset/logonews.png";
+import logors from "../asset/logors.png";
+import predictionman from "../asset/predictionman.png";
+import logocalendar from "../asset/logocalendar.png";
+import logoprediction from "../asset/logoprediction.png";
+import logograph from "../asset/logograph.png";
+import logobull from "../asset/logobull.png";
+import logomoney from "../asset/logomoney.png";
 
 export const navigation = [
   {
@@ -155,59 +170,59 @@ export const collabContent = [
 export const collabApps = [
   {
     id: "0",
-    title: "Figma",
-    icon: figma,
-    width: 26,
-    height: 36,
+    title: "logomoney",
+    icon: logomoney,
+    width: 966,
+    height: 506,
   },
   {
     id: "1",
-    title: "Notion",
-    icon: notion,
-    width: 34,
-    height: 36,
+    title: "logonews",
+    icon: logonews,
+    width: 304,
+    height: 306,
   },
   {
     id: "2",
-    title: "Discord",
-    icon: discord,
-    width: 36,
-    height: 28,
+    title: "logors",
+    icon: logors,
+    width: 306,
+    height: 208,
   },
   {
     id: "3",
-    title: "Slack",
-    icon: slack,
-    width: 34,
-    height: 35,
+    title: "logoipo",
+    icon: logoipo,
+    width: 304,
+    height: 3005,
   },
   {
     id: "4",
-    title: "Photoshop",
-    icon: photoshop,
-    width: 34,
-    height: 34,
+    title: "logocalendar",
+    icon: logocalendar,
+    width: 304,
+    height: 304,
   },
   {
     id: "5",
-    title: "Protopie",
-    icon: protopie,
-    width: 34,
-    height: 34,
+    title: "logoprediction",
+    icon: logoprediction,
+    width: 304,
+    height: 340,
   },
   {
     id: "6",
-    title: "Framer",
-    icon: framer,
-    width: 26,
-    height: 34,
+    title: "logograph",
+    icon: logograph,
+    width: 206,
+    height: 304,
   },
   {
     id: "7",
-    title: "Raindrop",
-    icon: raindrop,
-    width: 38,
-    height: 32,
+    title: "logobull",
+    icon: logobull,
+    width: 380,
+    height: 320,
   },
 ];
 
