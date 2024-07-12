@@ -1,13 +1,12 @@
 import React from "react";
 
-const StocksNews = () => {
+const SignUp = () => {
   return (
-    <div>
-      <h1>Stocks News</h1>
-      <p>This is the Stocks News page.</p>
-      {/* Add your content here */}
+    <div className="sign-up-page">
+      <h1>Sign Up</h1>
+      {/* Add your sign-up form or content here */}
     </div>
   );
 };
 
-export default StocksNews;
+export default SignUp;

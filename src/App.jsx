@@ -10,6 +10,11 @@ import StocksNews from "./components/StocksNews";
 import Ipogmp from "./components/Ipogmp";
 import DividendCalendar from "./components/DividendCalendar"; // Import the Dividend Calendar component
 import StockPrediction from "./components/stockprediction"; 
+import Collaboration from "./components/Collaboration";
+import Services from "./components/Services";
+import Pricing from "./components/Pricing";
+import Roadmap from "./components/Roadmap";
+
 
 const App = () => {
   return (
@@ -25,9 +30,10 @@ const App = () => {
         <Route path="/" element={
           <>
             <Hero />
+            <Collaboration />
             <Benefits />
-            {/* <Collaboration />
-            <Services />
+            
+            {/* <Services />
             <Pricing />
             <Roadmap /> */}
             <Footer />

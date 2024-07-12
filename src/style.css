@@ -1,0 +1,35 @@
+/* src/styles.css */
+.news-container {
+    width: 80%;
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    font-family: Arial, sans-serif;
+}
+
+.news-article {
+    border-bottom: 1px solid #ddd;
+    padding: 10px 0;
+}
+
+.news-article:last-child {
+    border-bottom: none;
+}
+
+.news-title {
+    font-size: 18px;
+    font-weight: bold;
+    margin: 0;
+}
+
+.news-description {
+    margin: 5px 0 0;
+}
+
+.news-link {
+    display: block;
+    margin-top: 10px;
+    color: #1a0dab;
+}

@@ -130,21 +130,25 @@ export const roadmap = [
 ];
 
 export const collabText =
-  "With smart automation and top-notch security, it's the perfect solution for teams looking to work smarter.";
+  "With stocksgod, everything is possible.stay up-to-date with the latest stock news, and maximize your earnings.";
 
 export const collabContent = [
   {
     id: "0",
-    title: "Seamless Integration",
-    text: collabText,
+    title: "Feeling like you're always chasing the latest stock rally, but missing out due to lack of timely news?",
+  
   },
   {
     id: "1",
-    title: "Smart Automation",
+    title: "Overwhelmed by the choice of IPOs, unsure where to invest your money wisely?",
   },
   {
     id: "2",
-    title: "Top-notch Security",
+    title: "Ever missed out on a dividend record date, regretting not staying informed?",
+  },
+  {
+    id: "3",
+    title: "Struggling to predict which stocks will perform well in the future, missing out on potential gains?",
   },
 ];
 
