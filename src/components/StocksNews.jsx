@@ -1,12 +1,20 @@
-import React from "react";
+import React, { useEffect } from 'react';
+import './stocksnews.css';
 
-const SignUp = () => {
+const StocksNews = () => {
+  useEffect(() => {
+    const script = document.createElement('script');
+    script.src = "//widget.tagembed.com/embed.min.js";
+    script.type = "text/javascript";
+    document.body.appendChild(script);
+  }, []);
+
   return (
-    <div className="sign-up-page">
-      <h1>Sign Up</h1>
-      {/* Add your sign-up form or content here */}
+    <div className="stocks-news">
+      <h2>Stock Market News</h2>
+      <div className="tagembed-widget" style={{ width: '100%', height: '100%' }} data-widget-id="156517" view-url="https://widget.tagembed.com/156517"></div>
     </div>
   );
 };
 
-export default SignUp;
+export default StocksNews;
