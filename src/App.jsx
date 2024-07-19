@@ -14,7 +14,8 @@ import Collaboration from "./components/Collaboration";
 import Services from "./components/Services";
 import Pricing from "./components/Pricing";
 import Roadmap from "./components/Roadmap";
-
+import 'react-toastify/dist/ReactToastify.css';
+import Home from './components/Home';
 
 const App = () => {
   return (
@@ -27,6 +28,7 @@ const App = () => {
         <Route path="/ipo-gmp" element={<Ipogmp />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
+        <Route path="/Home" element={<Home />} />
         <Route path="/" element={
           <>
             <Hero />
