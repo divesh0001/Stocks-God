@@ -1,20 +1,39 @@
-import React, { useEffect } from 'react';
+
+import React from 'react';
 import './stocksnews.css';
 
-const StocksNews = () => {
-  useEffect(() => {
-    const script = document.createElement('script');
-    script.src = "//widget.tagembed.com/embed.min.js";
-    script.type = "text/javascript";
-    document.body.appendChild(script);
-  }, []);
+const newsData = [
+  {
+    title: "Budget 2024 news",
+    content: "Defence budget increased by 10% in 2024",
+    company: "Cochin Shipyard, HAL, BEL, BDL, GRSE, Garden Reach Shipbuilders & Engineers, Mazagon Dock Shipbuilders"
+},
+    {
+        title: "Defense stock got order form government ",
+        content: "Hindustan Aeronautics Ltd. recieves order worth Rs 537 crore",
+        company: "HAL"
+    },
+    {
+        title: "TCS profit falls",
+        content: "TCS profit falls 7% to Rs 9,008 crore in Q2",
+        company: "TCS"
+    },
+    
+    // Add more news items here
+];
 
-  return (
-    <div className="stocks-news">
-      <h2>Stock Market News</h2>
-      <div className="tagembed-widget" style={{ width: '100%', height: '100%' }} data-widget-id="156517" view-url="https://widget.tagembed.com/156517"></div>
-    </div>
-  );
-};
+const StocksNews = () => {
+    return (
+        <div className="news-container">
+            {newsData.map((news, index) => (
+                <div key={index} className="news-box">
+                    <h2 className="news-title">{news.title}</h2>
+                    <p className="news-content">{news.content}</p>
+                    <p className="news-footer">Stocks to get Affected - <span className="company-name">{news.company}</span></p>
+                </div>
+            ))}
+        </div>
+    );
+}
 
 export default StocksNews;
