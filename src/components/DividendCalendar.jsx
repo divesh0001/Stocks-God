@@ -1,71 +1,74 @@
-import React, { useState } from "react";
-import Calendar from "react-calendar";
-import 'react-calendar/dist/Calendar.css'; // Import the CSS for the calendar
+import React, { useState } from 'react';
+import Calendar from 'react-calendar';
+import 'react-calendar/dist/Calendar.css';
+import './customCalendar.css'; // To add custom styles
 
 const DividendCalendar = () => {
   const [date, setDate] = useState(new Date());
-  const [dividendStocks, setDividendStocks] = useState([]);
+  const [dividendInfo, setDividendInfo] = useState([]);
 
-  const onChange = (newDate) => {
-    setDate(newDate);
-    // Here you would typically fetch the dividend stocks for the selected date from your data source
-    // For demonstration, let's assume a static list for selected dates
-    const selectedDate = newDate.toISOString().slice(0, 10); // Format date as YYYY-MM-DD
-    const mockDividends = {
-      "2024-07-15": ["Company A", "Company B", "Company C"],
-      "2024-07-20": ["Company X", "Company Y"],
-      // Add more mock data as needed
-    };
-    const stocks = mockDividends[selectedDate] || [];
-    setDividendStocks(stocks);
+  const dividendsData = {
+    '2024-07-20': [
+      { companyName: "Sample Company 1", dividendAmount: "$5.00" },
+      { companyName: "Sample Company 2", dividendAmount: "$2.50" },
+    ],
+    '2024-07-21': [
+      { companyName: "Sample Company 3", dividendAmount: "$3.00" },
+      { companyName: "Sample Company 4", dividendAmount: "$4.00" },
+      { companyName: "Sample Company 5", dividendAmount: "$1.50" },
+    ],
+    '2024-07-22': [
+      { companyName: "Sample Company 6", dividendAmount: "$3.00" },
+      { companyName: "Sample Company 7", dividendAmount: "$4.00" },
+      { companyName: "Sample Company 8", dividendAmount: "$1.50" },
+    ],
+    '2024-07-23': [
+      { companyName: "Sample Company 9", dividendAmount: "$3.00" },
+      { companyName: "Sample Company 10", dividendAmount: "$4.00" },
+      { companyName: "Sample Company 11", dividendAmount: "$1.50" },
+    ],
+    '2024-07-24': [
+      { companyName: "Sample Company 12", dividendAmount: "$3.00" },
+      { companyName: "Sample Company 13", dividendAmount: "$4.00" },
+      { companyName: "Sample Company 14", dividendAmount: "$1.50" },
+    ],
+    '2024-07-25': [
+      { companyName: "Sample Company 15", dividendAmount: "$3.00" },
+      { companyName: "Sample Company 16", dividendAmount: "$4.00" },
+      { companyName: "Sample Company 17", dividendAmount: "$1.50" },
+    ],
+    // Add more data as needed
   };
 
-  // Custom tile content function to style each date
-  const tileContent = ({ date, view }) => {
-    if (view === 'month') {
-      const dayOfWeek = date.getDay();
-      const isWeekend = dayOfWeek === 0 || dayOfWeek === 6; // 0 is Sunday, 6 is Saturday
-
-      // Return different styling based on weekend or weekday
-      return (
-        <div className={`text-center text-xs pt-1 rounded-full ${isWeekend ? 'bg-red-100' : 'bg-purple-200'}`}>
-          {date.getDate()}
-        </div>
-      );
-    }
+  const handleDateClick = (value) => {
+    const dateString = value.toISOString().split('T')[0];
+    const data = dividendsData[dateString] || [];
+    setDividendInfo(data);
   };
 
   return (
-    <div className="container mx-auto p-4 grid grid-cols-2 gap-4">
-      <div>
-        <h1 className="text-3xl font-bold mb-4 text-center text-white">Dividend Calendar</h1>
-        <p className="text-lg mb-6 text-center text-white">Explore upcoming dividend dates.</p>
-        <div className="bg-purple-800 rounded-lg shadow-lg p-6">
-          <Calendar
-            onChange={onChange}
-            value={date}
-            className="react-calendar"
-            tileContent={tileContent}
-          />
-        </div>
-        <p className="text-sm text-center mt-4 text-white">
-          Click on a date to view details.
-        </p>
+    <div className="min-h-screen bg-black p-8 flex flex-col md:flex-row">
+      <div className="w-full md:w-2/3 p-4">
+        <h1 className="text-3xl font-bold text-center text-white mb-8">Dividend Calendar</h1>
+        <h2 className="text-2xl font-normal text-white mb-4">Currently we have data for 21-25 july</h2>
+        <Calendar
+          onClickDay={handleDateClick}
+          value={date}
+          onChange={setDate}
+          className="bg-purple-800 text-white rounded-md shadow-md p-4"
+        />
       </div>
-      <div>
-        <div className="bg-white rounded-lg shadow-lg p-4">
-          <h2 className="text-xl font-bold mb-2">Dividends for {date.toLocaleDateString()}</h2>
-          {dividendStocks.length > 0 ? (
-            <ul className="list-disc list-inside">
-              {dividendStocks.map((stock, index) => (
-                <li key={index}>{stock}</li>
-              ))}
-            </ul>
-          ) : (
-            <p>No dividends found for selected date.</p>
-          )}
+      {dividendInfo.length > 0 && (
+        <div className="w-full md:w-1/3 bg-purple-800 text-white rounded-md shadow-md p-4 mt-4 md:mt-0 md:ml-2">
+          <h2 className="text-2xl font-bold mb-4">Dividend Information</h2>
+          {dividendInfo.map((info, index) => (
+            <div key={index} className="border-b border-purple-400 pb-2 mb-2">
+              <p><strong>Company Name:</strong> {info.companyName}</p>
+              <p><strong>Dividend Amount:</strong> {info.dividendAmount}</p>
+            </div>
+          ))}
         </div>
-      </div>
+      )}
     </div>
   );
 };

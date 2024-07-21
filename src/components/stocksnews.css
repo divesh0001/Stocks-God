@@ -2,13 +2,14 @@
 .news-container {
   display: flex;
   flex-direction: column;
+
   gap: 20px; /* Ensure space between each news box */
   padding: 20px;
   background-color: #1e1e1e; /* Match background to the site's theme */
 }
 
 .news-box {
-  background: #44026f; /* Match background to the site's theme */
+  background: #580d8b; /* Match background to the site's theme */
   border: 1px solid #ddd; /* Ensure border is visible */
   border-radius: 8px;
   padding: 20px;

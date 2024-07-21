@@ -12,7 +12,7 @@ const Login = () => {
 
   return (
     <div className="flex items-center justify-center min-h-screen bg-black">
-      <div className="w-full max-w-md p-8 space-y-8 bg-purple-600 rounded shadow-md">
+      <div className="w-full max-w-md p-8 space-y-8 bg-purple-800 rounded shadow-md">
         <h2 className="text-2xl font-bold text-center text-white">Sign in to your account</h2>
         <form onSubmit={handleSubmit} className="mt-8 space-y-6">
           <div className="rounded-md shadow-sm -space-y-px">
@@ -69,7 +69,7 @@ const Login = () => {
           <div>
             <button
               type="submit"
-              className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-purple-700 hover:bg-purple-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500"
+              className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-purple-500 hover:bg-purple-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500"
             >
               Sign in
             </button>
