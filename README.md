@@ -1,1 +1,1 @@
-Deployement link of this project- stocksgod.live
+Deployement link of this project- [stocksgod.live](stocksgod.live)
