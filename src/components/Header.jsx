@@ -57,7 +57,7 @@ const Header = () => {
                 {item.title}
               </Link>
             ))}
-          </div>
+          </div> 
 
           <HamburgerMenu />
         </nav>
