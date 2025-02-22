@@ -1,0 +1,11 @@
+```yaml
+services:
+  - type: web
+    name: stocksgod-backend
+    env: python
+    plan: free
+    # Specify the directory where your Flask app resides, relative to the root of the repository.
+    rootDir: backend
+    buildCommand: "pip install -r requirements.txt"
+    startCommand: "gunicorn app:app"
+```
