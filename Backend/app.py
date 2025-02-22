@@ -9,7 +9,8 @@ import requests
 from flask_cors import CORS
 
 app = Flask(__name__)
-CORS(app)
+# Configure CORS to only allow requests from your deployed frontend URL
+CORS(app, resources={r"/api/*": {"origins": "https://stocksgod.live"}})
 
 @app.route('/')
 def home():
