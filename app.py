@@ -1,18 +1,23 @@
 from flask import Flask, request, jsonify
-from stock_predictor import predict_stock_performance
 from flask_cors import CORS
+from stock_predictor import predict_stock_performance
 
 app = Flask(__name__)
-CORS(app)  # This enables CORS for all domains (important for React)
+CORS(app)
 
 @app.route('/predict', methods=['POST'])
 def predict():
+    """Handle prediction requests from the frontend."""
     try:
-        stock_name = request.json['stock_name']
-        prediction = predict_stock_performance(stock_name)
-        return jsonify({"prediction": prediction.tolist()})
-    except Exception as e:
-        return jsonify({"error": str(e)}), 400
+        data = request.get_json()
+        company_name = data.get("company_name")
+        if not company_name:
+            return jsonify({"error": "Company name is required"}), 400
 
-if __name__ == '__main__':
+        prediction_result = predict_stock_performance(company_name)
+        return jsonify(prediction_result)
+    except Exception as e:
+        return jsonify({"error": f"An unexpected error occurred: {str(e)}"}), 500
+
+if __name__ == "__main__":
     app.run(debug=True)
