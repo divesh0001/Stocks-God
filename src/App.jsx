@@ -23,8 +23,7 @@ const App = () => {
 
   // Fetch data from Flask API on page load
   useEffect(() => {
-    // Change this URL to your deployed backend endpoint when in production
-    fetch("https://stocksgod-backend.onrender.com/api/data")
+    fetch("http://127.0.0.1:5000/api/data") // Update with your Flask API URL
       .then((response) => response.json())
       .then((data) => {
         setBackendData(data);
@@ -47,17 +46,14 @@ const App = () => {
         <Route path="/ipo-gmp" element={<Ipogmp />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
-        <Route 
-          path="/" 
-          element={
-            <>
-              <Hero />
-              <Collaboration />
-              <Benefits />
-              <Footer />
-            </>
-          } 
-        />
+        <Route path="/" element={
+          <>
+            <Hero />
+            <Collaboration />
+            <Benefits />
+            <Footer />
+          </>
+        } />
       </Routes>
       <ButtonGradient />
     </div>
