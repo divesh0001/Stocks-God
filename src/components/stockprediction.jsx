@@ -174,7 +174,7 @@ const StockPrediction = ({ backendData }) => {
     setSelectedOption(option);
     setStock(option.value);
   };
-//http://127.0.0.1:5000/api/predict?symbol=${stock}
+//https://stocksgod-backend.onrender.com/api/predict?symbol=${stock}
   const handlePredict = () => {
     if (!stock) {
       alert("Please select a stock symbol first.");
