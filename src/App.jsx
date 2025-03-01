@@ -22,8 +22,9 @@ const App = () => {
   const [backendData, setBackendData] = useState(null);
 
   // Fetch data from Flask API on page load
+  //http://127.0.0.1:5000/api/data
   useEffect(() => {
-    fetch("http://127.0.0.1:5000/api/data") // Update with your Flask API URL
+    fetch("https://stocksgod-backend.onrender.com/api/data") // Update with your Flask API URL
       .then((response) => response.json())
       .then((data) => {
         setBackendData(data);

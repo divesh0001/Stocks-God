@@ -175,13 +175,14 @@ const StockPrediction = ({ backendData }) => {
     setStock(option.value);
   };
 //https://stocksgod-backend.onrender.com/api/predict?symbol=${stock}
+//http://127.0.0.1:5000/api/predict?symbol=${stock}
   const handlePredict = () => {
     if (!stock) {
       alert("Please select a stock symbol first.");
       return;
     }
     setLoading(true);
-    fetch(`http://127.0.0.1:5000/api/predict?symbol=${stock}`)
+    fetch(`https://stocksgod-backend.onrender.com/api/predict?symbol=${stock}`)
       .then((response) => response.json())
       .then((data) => {
         setPrediction(data);
