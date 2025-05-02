@@ -4,10 +4,29 @@ const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Handle login logic here
-    console.log('Email:', email, 'Password:', password);
+    //http://localhost:5000/api/auth/login
+    //http://stocksgod.live/api/auth/login
+
+    try {
+      const res = await fetch('http://localhost:5000/api/auth/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, password }),
+      });
+      const data = await res.json();
+      
+      if (res.ok) {
+        alert('Login successful!');
+        // Handle further login logic (e.g., saving a token, redirecting, etc.)
+      } else {
+        alert(data.msg || 'Login failed');
+      }
+    } catch (err) {
+      console.error(err);
+      alert('Error connecting to server');
+    }
   };
 
   return (

@@ -6,11 +6,34 @@ const Signup = () => {
   const [dob, setDob] = useState('');
   const [password, setPassword] = useState('');
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Handle signup logic here
-    console.log('Name:', name, 'Email:', email, 'Date of Birth:', dob, 'Password:', password,);
+ //http://localhost:5000/api/auth/signup
+ //http://stocksgod.live/api/auth/signup
+    try {
+      const res = await fetch('http://localhost:5000/api/auth/signup', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name, email, dob, password }),
+      });
+  
+      const data = await res.json();
+  
+      if (res.ok) {
+        alert('Signup successful!');
+        setName('');
+        setEmail('');
+        setDob('');
+        setPassword('');
+      } else {
+        alert(data.msg || 'Signup failed');
+      }
+    } catch (err) {
+      console.error(err);
+      alert('Error connecting to server');
+    }
   };
+  
 
   const handleGoogleSignIn = () => {
     // Placeholder for Google Sign-In logic

@@ -10,7 +10,7 @@ from flask_cors import CORS
 
 app = Flask(__name__)
 # Allow only requests coming from https://stocksgod.live for all /api/* endpoints.
-CORS(app, resources={r"/api/*": {"origins": "https://stocksgod.live"}})
+CORS(app, resources={r"/api/*": {"origins": "http://localhost:5173"}})
 
 @app.route('/')
 def home():

@@ -182,7 +182,7 @@ const StockPrediction = ({ backendData }) => {
       return;
     }
     setLoading(true);
-    fetch(`https://stocksgod-backend.onrender.com/api/predict?symbol=${stock}`)
+    fetch(`http://127.0.0.1:5000/api/predict?symbol=${stock}`)
       .then((response) => response.json())
       .then((data) => {
         setPrediction(data);
