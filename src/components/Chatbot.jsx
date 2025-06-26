@@ -1,48 +1,30 @@
-import React, { useState } from 'react';
+import { useEffect } from "react";
 
 const Chatbot = () => {
-  const [input, setInput] = useState('');
-  const [messages, setMessages] = useState([]);
+  useEffect(() => {
+    window.botpressWebChat = {
+      botId: "08a112d8-876c-43a6-9c50-99eb5efd20ae",
+      hostUrl: "https://cdn.botpress.cloud/webchat/v1",
+      messagingUrl: "https://messaging.botpress.cloud",
+      clientId: "08a112d8-876c-43a6-9c50-99eb5efd20ae",
+      botName: "StocksGod Bot",
+      showPoweredBy: false,
+      stylesheet: "https://cdn.botpress.cloud/webchat/v1/themes/light.css",
+      enableReset: true,
+      showWidget: true, // ✅ Required to show the chat bubble
+    };
 
-  const sendMessage = async (e) => {
-    e.preventDefault();
-    if (!input.trim()) return;
-    const userMsg = { sender: 'user', text: input };
-    setMessages((msgs) => [...msgs, userMsg]);
-    setInput('');
-    try {
-      const res = await fetch('http://localhost:5000/api/chat', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ message: input }),
-      });
-      const data = await res.json();
-      setMessages((msgs) => [...msgs, { sender: 'bot', text: data.reply }]);
-    } catch {
-      setMessages((msgs) => [...msgs, { sender: 'bot', text: 'Error contacting chatbot.' }]);
-    }
-  };
+    const script = document.createElement("script");
+    script.src = "https://cdn.botpress.cloud/webchat/v1/inject.js";
+    script.async = true;
+    document.body.appendChild(script);
 
-  return (
-    <div style={{ background: '#222', color: '#fff', padding: 16, borderRadius: 8, maxWidth: 400 }}>
-      <div style={{ minHeight: 200, marginBottom: 8 }}>
-        {messages.map((msg, i) => (
-          <div key={i} style={{ textAlign: msg.sender === 'user' ? 'right' : 'left' }}>
-            <b>{msg.sender === 'user' ? 'You' : 'Bot'}:</b> {msg.text}
-          </div>
-        ))}
-      </div>
-      <form onSubmit={sendMessage} style={{ display: 'flex' }}>
-        <input
-          value={input}
-          onChange={e => setInput(e.target.value)}
-          style={{ flex: 1, marginRight: 8, padding: 4 }}
-          placeholder="Type your message..."
-        />
-        <button type="submit" style={{ padding: '4px 12px' }}>Send</button>
-      </form>
-    </div>
-  );
+    return () => {
+      document.body.removeChild(script);
+    };
+  }, []);
+
+  return null;
 };
 
 export default Chatbot;

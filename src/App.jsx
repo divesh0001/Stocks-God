@@ -53,7 +53,7 @@ const App = () => {
             <Hero />
             <Collaboration />
             <Benefits />
-             <Chatbot />
+            <Chatbot />
             <Footer />
           </>
         } />
