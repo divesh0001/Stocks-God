@@ -24,18 +24,24 @@ const App = () => {
 
   // Fetch data from Flask API on page load
   //http://127.0.0.1:5000/api/data
-  useEffect(() => {
-    fetch("https://stocksgod-backend.onrender.com/api/data") // Update with your Flask API URL
-      .then((response) => response.json())
-      .then((data) => {
-        setBackendData(data);
+ useEffect(() => {
+  fetch("https://stocksgod-backend.onrender.com/api/data")
+    .then((response) => response.json())
+    .then((data) => {
+      setBackendData(data);
+      // Only show toast if running on localhost
+      if (window.location.hostname === "localhost") {
         toast.success("Connected to Flask Backend! ✅");
-      })
-      .catch((error) => {
-        console.error("Error fetching data:", error);
-        toast.error("Failed to connect to Flask Backend ❌");
-      });
-  }, []);
+      }
+    })
+    .catch((error) => {
+      console.error("Error fetching data:", error);
+      if (window.location.hostname === "localhost") {
+        toast.error("Currently backend is down!");
+      }
+    });
+}, []);
+
 
   return (
     <div className="pt-[4.75rem] lg:pt-[5.25rem] overflow-hidden">
