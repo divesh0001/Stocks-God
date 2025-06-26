@@ -112,6 +112,36 @@ def predict():
     result = predict_stock_prices(stock_symbol)
     return jsonify(result)
 
+from dotenv import load_dotenv
+import os
+import openai
+
+load_dotenv()  # Load environment variables from .env file
+
+api_key = os.getenv("OPENAI_API_KEY")
+openai_client = openai.OpenAI(api_key=api_key)  # ✅ correct usage
+ # <-- Add this line
+
+@app.route('/api/chat', methods=['POST'])
+def chat():
+    data = request.get_json()
+    user_message = data.get('message', '')
+    if not user_message:
+        return jsonify({'reply': 'No message provided.'}), 400
+
+    try:
+        response = openai_client.chat.completions.create(
+            model="gpt-3.5-turbo",
+            messages=[{"role": "user", "content": user_message}]
+        )
+        reply = response.choices[0].message.content
+        return jsonify({'reply': reply})
+    except Exception as e:
+        import traceback
+        print(f"[ERROR] Chatbot error: {e}")
+        traceback.print_exc()
+        return jsonify({'reply': 'Error contacting chatbot.'}), 500
+    
 if __name__ == '__main__':
     app.run(debug=True)
     

@@ -16,6 +16,7 @@ import Collaboration from "./components/Collaboration";
 import Services from "./components/Services";
 import Pricing from "./components/Pricing";
 import Roadmap from "./components/Roadmap";
+import Chatbot from "./components/Chatbot";
 import "react-toastify/dist/ReactToastify.css";
 
 const App = () => {
@@ -52,6 +53,7 @@ const App = () => {
             <Hero />
             <Collaboration />
             <Benefits />
+             <Chatbot />
             <Footer />
           </>
         } />
