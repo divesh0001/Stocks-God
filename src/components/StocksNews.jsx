@@ -1,39 +1,62 @@
+import React, { useEffect, useState } from 'react';
 
-import React from 'react';
-import './stocksnews.css';
+const API_KEY = 'pub_564c3316cb4f49a98793614a40f2e186'; // Replace with your NewsData.io API key
+const QUERY = 'stock market OR stocks OR investing OR finance';
 
-const newsData = [
-  {
-    title: "Budget 2024 news",
-    content: "Defence budget increased by 10% in 2024",
-    company: "Cochin Shipyard, HAL, BEL, BDL, GRSE, Garden Reach Shipbuilders & Engineers, Mazagon Dock Shipbuilders"
-},
-    {
-        title: "Defense stock got order form government ",
-        content: "Hindustan Aeronautics Ltd. recieves order worth Rs 537 crore",
-        company: "HAL"
-    },
-    {
-        title: "TCS profit falls",
-        content: "TCS profit falls 7% to Rs 9,008 crore in Q2",
-        company: "TCS"
-    },
-    
-    // Add more news items here
-];
+function News() {
+  const [articles, setArticles] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState('');
 
-const StocksNews = () => {
-    return (
-        <div className="news-container">
-            {newsData.map((news, index) => (
-                <div key={index} className="news-box">
-                    <h2 className="news-title">{news.title}</h2>
-                    <p className="news-content">{news.content}</p>
-                    <p className="news-footer">Stocks to get Affected - <span className="company-name">{news.company}</span></p>
-                </div>
-            ))}
-        </div>
-    );
+  useEffect(() => {
+    async function fetchNews() {
+      setLoading(true);
+      setError('');
+      try {
+        const response = await fetch(
+          `https://newsdata.io/api/1/news?apikey=${API_KEY}&q=${encodeURIComponent(QUERY)}&language=en&category=business,top`
+        );
+        const data = await response.json();
+        if (data && data.results) {
+          setArticles(data.results);
+        } else {
+          setError('No news found.');
+        }
+      } catch (err) {
+        setError('Failed to fetch news.');
+      }
+      setLoading(false);
+    }
+
+    fetchNews();
+  }, []);
+
+  if (loading) return <div>Loading news...</div>;
+  if (error) return <div>Error: {error}</div>;
+
+  return (
+    <div>
+      <h2>Latest Stock Market News</h2>
+      <ul>
+        {articles.map((article, idx) => (
+          <li key={idx} style={{marginBottom: '1em', borderBottom: '1px solid #eee', paddingBottom: '1em'}}>
+            <a href={article.link} target="_blank" rel="noopener noreferrer">
+              <strong>{article.title}</strong>
+            </a>
+            <div>
+              <small>
+                {article.pubDate ? new Date(article.pubDate).toLocaleString() : ''}
+                {article.source_id ? ` | Source: ${article.source_id}` : ''}
+              </small>
+            </div>
+            <p>{article.description && article.description.length > 200
+              ? article.description.slice(0,200) + '...'
+              : article.description}</p>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
 }
 
-export default StocksNews;
+export default News;
